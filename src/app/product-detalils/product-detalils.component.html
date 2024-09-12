@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+
+<main class="container mt-5 mb-5 ">
+
+    <div class="row productDetalis">
+
+        <div class="col-lg-4 col-12 mt-5">
+            <img src="{{getProductDetalis.pdImg}}" alt="">
+
+        </div>
+        <div class="col-lg-8  col-12 mt-5">
+
+             <h4>{{getProductDetalis.pdName}}</h4>
+             <p class="my-5">{{getProductDetalis.pdDesc}}</p>
+             <p>$ {{getProductDetalis.pdPrice}}</p>
+            <a *ngIf="!inCart" class="btn btn-md btn-warning " routerLink="/cart"  (click)="addToCart(getProductDetalis)">
+                <i class="bi bi-cart-plus" aria-hidden="true"></i> 
+                Add To Cart
+            </a>
+
+
+        </div>
+
+    </div>
+</main>

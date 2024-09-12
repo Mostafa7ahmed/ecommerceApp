@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+<main class="container-fluid mt-5 mb-5">
+
+
+    <div class="row pageBox">
+
+        <div class="col-lg-4 col-12 mt-5">
+
+
+            <!-- fliter -->
+
+            <p>fliter</p>
+            <p>Category : {{getParamValue | titlecase}}</p>
+            <p>Subcategory: {{getParamValue | titlecase}}</p>
+           <div class="col-lg-4">
+            
+            <select name="" id="" class="form-select" (change)="filterSelect($event)">
+                <option value="all">All</option>
+                <option value="{{item.subcategories}}" *ngFor="let item of getsubCategorisOpration" >
+                    {{item.subcategories}}
+                </option>
+            </select>
+           </div>
+
+        </div>
+        <div class="col-lg-8">
+            <!-- product Content -->
+
+            <div class="row pageContent mb-5 col-12 mt-5" *ngFor="let item of filterProductDaya">
+                <div class="col-lg-4">
+                    <img src="{{item.pdImg}}" >
+
+                </div>
+                <div class="col-lg-8 col-12 mt-5 ">
+
+                    <h4>{{item.pdName}}</h4>
+                    <p>{{item.pdDesc}}</p>
+                    <p>{{item.pdPrice | number}}</p>
+                    <a [routerLink]="['/productDetalis', item.pdCategory , item.pdId]" class="btn btn-md btn-dark"> Wiew Product <i class="bi bi-arrow-right"></i></a>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</main>

@@ -1,0 +1,123 @@
+<app-navbar [getCartData]="totalcart"></app-navbar>
+
+<main class="container my-5">
+
+
+
+    <div class="cart bg-white text-center fw-bolder  mt-5 mb-5 py-4" *ngIf="totalcart == 0 ">
+        <h4>Cart Is Empty</h4>
+    </div>
+
+    <div class="row" *ngIf="totalcart > 0 ">
+
+
+
+        <div class="col-lg-8 col-12 cartBox">
+            <!--   Cart Conteant -->
+
+            <div class="row mb-5" *ngFor="let data of getCartData">
+
+                <div class="col-lg-2">
+                    <img [src]="data.pdImg" alt="">
+                </div>
+                <div class="col-lg-10 my-5">
+                    <h4>{{data.pdName}}</h4>
+                    <p>{{data.pdDesc}}</p>
+                    <p>Price : {{data.pdPrice | number}} <span><i class="bi bi-currency-rupee"></i></span></p>
+                    <button class="btn btn-sm btn-danger my-3" (click)="RemoveCart(data)"> <i
+                            class="bi bi-trash3-fill"></i> Remove </button>
+
+                    <div class="qunaty my-3">
+                        <button class="btnAdd" (click)="plusMinsCount(data, 'plus')"> + </button>
+                        <input type="text" class="col-lg-1 mx-2 inputQundaty" value="{{data.plusMinusCounter}}"
+                            disabled>
+                        <button class="btnAdd" (click)="plusMinsCount(data, 'minus')"
+                            [disabled]="data.plusMinusCounter > 1 ? false : true"> - </button>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="col-lg-4  col-12">
+            <!-- price Conteant -->
+            <div class="priceBox">
+
+                <h4 class="fw-bold">Price Details</h4>
+
+                <hr>
+
+                <p class="py-3">
+                    <span class="float-start"> Price({{totalcart}})</span>
+                    <span class="float-end"><i class="bi bi-currency-rupee"></i> {{totalAmount | number}}</span>
+
+                </p>
+                <div class="clearfix"></div>
+                <p class="py-3">
+                    <span class="float-start"> Delivery</span>
+                    <span class="float-end">Free</span>
+
+                </p>
+                <div class="clearfix"></div>
+                <hr>
+
+                <p class="py-3">
+                    <span class="float-start"> Totacl Amount </span>
+                    <span class="float-end"><i class="bi bi-currency-rupee"></i> {{totalAmount | number}}</span>
+
+                </p>
+                <div class="clearfix"></div>
+                <button type="button" class="btn btn-warning btn-md mt-5 col-12 " data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Place Orders <i class="bi bi-arrow-right btnOrder"></i></button>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Confirm Order</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">Enter Email Id :</label>
+                  <input type="email" class="form-control" id="recipient-name">
+                </div>
+                <div class="mb-3">
+                  <label for="message-text" class="col-form-label">Enter Address:</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+
+                <div class="mb-3 d-flex align-items-center g-5">
+                    <input type="radio" checked>
+
+                    <label for="recipient-name" class="col-form-label  mx-2">Cash On Dalivery </label>
+                  </div>
+
+
+                 <div class="mb-3">
+                    <h5>Total Price :{{this.totalAmount | number}}</h5>
+
+                 </div> 
+                
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-warning"  data-bs-dismiss="modal" (click)="orderClick()"> Order Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</main>
+

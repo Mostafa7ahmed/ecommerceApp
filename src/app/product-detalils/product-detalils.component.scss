@@ -1,0 +1,13 @@
+.productDetalis{
+    background-color: #fff;
+    padding: 50px ;
+}
+.productDetalis img{
+    width: 50%;
+}
+@media screen and (max-width:600px) {
+
+    .productDetalis img{
+        width: 100%;
+    }
+}

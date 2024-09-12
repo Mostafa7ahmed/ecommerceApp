@@ -1,0 +1,38 @@
+.cartBox{
+
+    padding: 50px;
+    background-color: #fff;
+}
+.cartBox img{
+    width: 100%;
+}
+
+.priceBox{
+    background-color: #fff;
+    padding: 30px;
+}
+.inputQundaty{
+    border-radius: 10px;
+    border: 1px solid #eee;
+    outline: none;
+}
+.btnAdd{
+    background-color: #9f0f0f;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    width: 30px;
+    font-size: 18px;
+}
+
+.btnOrder:hover {
+    transform: translateX(20px);
+    transition: 2s all  ease;
+}
+@media  (max-width: 768px){
+    .priceBox{
+        margin-top: 50px;
+    }
+    
+}

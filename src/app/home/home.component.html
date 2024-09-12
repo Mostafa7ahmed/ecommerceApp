@@ -1,0 +1,145 @@
+<app-navbar></app-navbar>
+
+<main class="container-fluid p-0">
+  <!-- Banner  start -->
+  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" *ngFor="let item of imageBanner">
+        <img [src]="item.img" class="d-block w-100" alt="..." />
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <!-- Banner  End -->
+
+  <!-- Start Categoris -->
+
+  <div class="container my-5">
+    <div class="row categoryBox">
+      <div class="col-lg-3 col-6 categoryContent" *ngFor="let item of GetDataService">
+        <a [routerLink]="['productPage', item.code]">
+          <img [src]="item.img" alt="" />
+          <h4>{{ item.name }}</h4>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Categoris -->
+
+  <!-- Show Products Starts -->
+
+  <div class="container mt-3 mb-3">
+    <div class="row productBox">
+      <p class="d-flex align-items-center justify-content-between">
+        <a [routerLink]="['/productPage' , 'appliances']">Best ofAppliance</a>
+        <a [routerLink]="['/productPage', 'appliances']"><i class="bi bi-arrow-right-circle"></i></a>
+      </p>
+
+      <div class="col-lg-3 mt-3" *ngFor="let item of GetApplicationProducts; index as i">
+        <a [routerLink]="['/productDetalis',item.pdCategory , item.pdId] " class="productLink">
+
+          <div class="productContent" *ngIf="i <= 3">
+            <div class="productImg mb-3">
+              <img [src]="item.pdImg" alt="" />
+            </div>
+            <h4>{{ item.pdName ? (item.pdName | slice:0:10) : 'Unnamed Product' }}</h4>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+  <!-- End  Products Starts -->
+
+
+
+
+  <!-- Show fashion Starts -->
+
+  <div class="container mt-3 mb-3">
+    <div class="row productBox">
+      <p class="d-flex align-items-center justify-content-between">
+        <a [routerLink]="['/productPage' , 'fashion']">Best  Of fashion</a>
+        <a [routerLink]="['/productPage', 'fashion']"><i class="bi bi-arrow-right-circle"></i></a>
+      </p>
+
+      <div class="col-lg-3 mt-3" *ngFor="let item of GetfashionProducts; index as i">
+        <a [routerLink]="['/productDetalis',item.pdCategory , item.pdId] " class="productLink">
+
+          <div class="productContent" *ngIf="i <= 3">
+            <div class="productImg mb-3">
+              <img [src]="item.pdImg" alt="" />
+            </div>
+            <h4>{{ item.pdName ? (item.pdName | slice:0:10) : 'Unnamed Product' }}</h4>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+  <!-- End  fashion Starts -->
+
+
+
+    <!-- Show homeandfurniture Starts -->
+
+    <div class="container mt-3 mb-3">
+      <div class="row productBox">
+        <p class="d-flex align-items-center justify-content-between">
+          <a [routerLink]="['/productPage' , 'homeandfurniture']">Best  Of Homeandfurniture</a>
+          <a [routerLink]="['/productPage', 'homeandfurniture']"><i class="bi bi-arrow-right-circle"></i></a>
+        </p>
+  
+        <div class="col-lg-3 mt-3" *ngFor="let item of GetHomeandfurnitureProducts; index as i">
+          <a [routerLink]="['/productDetalis',item.pdCategory , item.pdId] " class="productLink">
+  
+            <div class="productContent" *ngIf="i <= 3">
+              <div class="productImg mb-3">
+                <img [src]="item.pdImg" alt="" />
+              </div>
+              <h4>{{ item.pdName ? (item.pdName | slice:0:10) : 'Unnamed Product' }}</h4>
+            </div>
+          </a>
+  
+        </div>
+      </div>
+    </div>
+    <!-- End  homeandfurniture Starts -->
+ 
+
+       <!-- Show Toys Starts -->
+
+    <div class="container mt-3 mb-3">
+      <div class="row productBox">
+        <p class="d-flex align-items-center justify-content-between">
+          <a [routerLink]="['/productPage' , 'toys']">Best  Of Toys</a>
+          <a [routerLink]="['/productPage', 'toys']"><i class="bi bi-arrow-right-circle"></i></a>
+        </p>
+  
+        <div class="col-lg-3 mt-3" *ngFor="let item of GetToysProducts; index as i">
+          <a [routerLink]="['/productDetalis',item.pdCategory , item.pdId] " class="productLink">
+  
+            <div class="productContent" *ngIf="i <= 3">
+              <div class="productImg mb-3">
+                <img [src]="item.pdImg" alt="" />
+              </div>
+              <h4>{{ item.pdName ? (item.pdName | slice:0:10) : 'Unnamed Product' }}</h4>
+            </div>
+          </a>
+  
+        </div>
+      </div>
+    </div>
+    <!-- End  Toys Starts -->
+
+</main>
